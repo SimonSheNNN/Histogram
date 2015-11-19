@@ -12,12 +12,29 @@ public class Sort {
 		int[] enter = new int[50];
 		int count=0;
 		theList( count, enter,  ints);
-		selectionSort(ints);
-		System.out.println("the selection sort is:");
-		System.out.println(ints);
+		startGame(ints);
 	}//main
 		
 		
+	
+	public static void startGame(List<Integer> ints){
+		System.out.println("which sort method do you want to use? 1 for selection sort, 2 for insertion sort");
+		Scanner in = new Scanner(System.in);
+		int sortNum=in.nextInt();
+		String whichSort;
+		if(sortNum==1){
+			selectionSort(ints);
+			whichSort="selection sort";
+		}
+		else{
+			whichSort="insertion sort";
+			insertionSort(ints);
+		}
+		System.out.println("the"+whichSort+" sort is:");
+		System.out.println(ints);
+	}
+	
+	
 	public static void theList(int count, int[]enter, List<Integer> ints){
 		System.out.println("enter something between 0-50");
 		System.out.println("signal the end by puting a number out of range");
@@ -50,9 +67,31 @@ public class Sort {
 			Integer temp = ints.get(min);
 			ints.set(min,ints.get(i));
 			ints.set(i,temp);
+			System.out.println(ints);
 			}//for 2
 		}//for 1
 
+	}//class
+	
+	public static void insertionSort(List<Integer> ints){
+		
+		int length = ints.size();
+	
+		for (int i = 1; i < length; i++) {
+			
+			for (int j=i;j>=0;j--){
+				
+
+				if(ints.get(i)<ints.get(j)){
+					Integer temp=ints.get(j);
+					ints.set(j,ints.get(i));
+					ints.set(i,temp);
+					i=j;
+				}
+			}
+			System.out.println(ints);
+		}
+		
 	}//class
 	
 	
