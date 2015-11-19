@@ -9,7 +9,7 @@ public class Sort {
 	public static void main(String[] args) {
 	
 		List<Integer> ints= new ArrayList<Integer>();
-		int[] enter = new int[50];
+		int[] enter = new int[51];
 		int count=0;
 		theList( count, enter,  ints);
 		startGame(ints);
@@ -30,6 +30,7 @@ public class Sort {
 			whichSort="insertion sort";
 			insertionSort(ints);
 		}
+		
 		System.out.println("the"+whichSort+" sort is:");
 		System.out.println(ints);
 	}
@@ -61,14 +62,18 @@ public class Sort {
 		for (int i = 0; i < length - 1; i++) {
 			int min = i;
 			for (int j = i + 1; j < length; j++){
+				System.out.println("looking for # less than" + ints.get(min));
 				if (ints.get(min) > ints.get(j)){
+					System.out.println( ints.get(j)+" is smaller than " + ints.get(min));
 					min = j;
 				}//if
+				
+			}//for 2
+			
 			Integer temp = ints.get(min);
 			ints.set(min,ints.get(i));
 			ints.set(i,temp);
-			System.out.println(ints);
-			}//for 2
+			System.out.println(ints);	
 		}//for 1
 
 	}//class
@@ -78,15 +83,18 @@ public class Sort {
 		int length = ints.size();
 	
 		for (int i = 1; i < length; i++) {
-			
-			for (int j=i;j>=0;j--){
-				
-
+			for (int j=i-1;j>=0;j--){
+				System.out.println("looking for place for " + ints.get(i)+" to place in");
 				if(ints.get(i)<ints.get(j)){
+					System.out.println( ints.get(i)+" is smaller than " + ints.get(j));
+					System.out.println( "switch" );
 					Integer temp=ints.get(j);
 					ints.set(j,ints.get(i));
 					ints.set(i,temp);
 					i=j;
+				}
+				else{
+					System.out.println( ints.get(i)+" is not smaller than or equal to " + ints.get(j) +", keep " + ints.get(i));
 				}
 			}
 			System.out.println(ints);
@@ -95,7 +103,7 @@ public class Sort {
 	}//class
 	
 	
-}//class
+}//overall
 
 
 
